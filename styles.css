@@ -11,6 +11,7 @@ body {
     
 }
 
+
 .side-panel {
     background: #333;
     color: #fff;
@@ -18,7 +19,7 @@ body {
     width: 120px;
     display: flex;
     flex-direction: column;
-    height: 100vh; /* Set the body height to 100% of the viewport height */
+    height: 200vh; /* Set the body height to 100% of the viewport height */
     align-items: center; /* Center items vertically */
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 1);
 }
@@ -36,16 +37,22 @@ body {
     border-radius: 10px; /* Added border-radius for rounded corners */
     margin-bottom: 15px; /* Increase the spacing between buttons */
     cursor: pointer;
+    transition-property: transform, box-shadow;
+    transition-duration: 0.07s;
+    transition-timing-function: linear;
+    transition-delay: 0.1s;
 }
 
 
 .side-panel button:hover {
-    text-decoration: underline;
-    transform: scale(1.05); /* Scale up by 5% */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 1); /* Add a subtle box shadow */
+    /*text-decoration: underline;*/
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 1);
 }
 .content {
     flex: 1;
+    text-align: center;
+    font-size: 18px;
 }
 
 header {
