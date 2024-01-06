@@ -1,37 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <title>Home | The 8 Bit Byte</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Link Preview</title>
+  <style>
+    #inputBox {
+      width: 300px;
+    }
+    #previewFrameContainer {
+      position: relative;
+    }
+    #previewFrame {
+      width: 400px;
+      height: 400px;
+      border: 1px solid #ccc;
+    }
+    #fullscreenButton {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+    }
+  </style>
 </head>
 <body>
-    <nav class="side-panel">
-        <!-- Your navigation buttons go here -->
-        <button onclick="window.location.href='#'">Home</button>
-        <button onclick="window.location.href='https://the8bitbyte.github.io/my-tools-and-software/'">Projects</button>
-        
-        <button onclick="window.location.href='https://the8bitbyte.github.io/Contact/'">Contact</button>
-    </nav>
+  <label for="inputBox">Enter a link:</label>
+  <input type="text" id="inputBox" placeholder="Enter a link">
+  <button onclick="setIframe()">Set Iframe</button>
 
-    <div class="content">
-        <header>
-            <!-- Your header content goes here -->
-            <h1>Iframe Unblocker</h1>
-        </header>
+  <div id="previewFrameContainer">
+    <iframe id="previewFrame" frameborder="0"></iframe>
+    <button id="fullscreenButton" onclick="toggleFullscreen()">Fullscreen</button>
+  </div>
 
-        <main>
-            <!-- Your main content goes here -->
-            <p>This is a Unblocker i was requested and paid to make for some friends</p>
-        </main>
+  <script>
+    function setIframe() {
+      var link = document.getElementById('inputBox').value;
+      document.getElementById('previewFrame').src = link;
+    }
 
-        <footer>
-            <!-- Your footer content goes here -->
-            
-        </footer>
-    </div>
-
+    function toggleFullscreen() {
+      var iframe = document.getElementById('previewFrame');
+      if (iframe.requestFullscreen) {
+        iframe.requestFullscreen();
+      } else if (iframe.mozRequestFullScreen) { // Firefox
+        iframe.mozRequestFullScreen();
+      } else if (iframe.webkitRequestFullscreen) { // Chrome, Safari, and Opera
+        iframe.webkitRequestFullscreen();
+      } else if (iframe.msRequestFullscreen) { // IE/Edge
+        iframe.msRequestFullscreen();
+      }
+    }
+  </script>
 </body>
 </html>
