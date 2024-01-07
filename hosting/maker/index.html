@@ -4,47 +4,62 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin: 50px;
-        }
-        .login-container {
-            max-width: 300px;
-            margin: auto;
-        }
-        input {
-            width: 100%;
-            padding: 10px;
-            margin: 8px 0;
-            display: inline-block;
-            border: 1px solid #ccc;
-            box-sizing: border-box;
-        }
-        button {
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px 15px;
-            margin: 8px 0;
-            border: none;
-            cursor: pointer;
-            width: 100%;
-        }
-    </style>
 </head>
 <body>
-    <div class="login-container">
+    <div id="login-container">
         <h2>Login</h2>
-        <form action="login.php" method="post">
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username" required>
-            <br>
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
-            <br>
-            <button type="submit">Login</button>
-        </form>
+        <label for="username">Username:</label>
+        <input type="text" id="username" required>
+        <br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" required>
+        <br>
+        <button onclick="checkLogin()">Login</button>
     </div>
+
+    <div id="success-container" style="display: none;">
+        <h2>Welcome!</h2>
+        <p>You have successfully logged in.</p>
+    </div>
+
+    <div id="failure-container" style="display: none;">
+        <h2>Login Failed</h2>
+        <p>Invalid username or password.</p>
+    </div>
+
+    <script>
+        function checkLogin() {
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+
+            // Simple check for demo purposes (replace with secure authentication in a real application).
+            if (username === "demo" && password === "password") {
+                loadHTMLFile("success.html");
+            } else {
+                showFailure();
+            }
+        }
+
+        function showSuccess() {
+            document.getElementById("login-container").style.display = "none";
+            document.getElementById("success-container").style.display = "block";
+        }
+
+        function showFailure() {
+            document.getElementById("login-container").style.display = "none";
+            document.getElementById("failure-container").style.display = "block";
+        }
+
+        function loadHTMLFile(filename) {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.body.innerHTML = this.responseText;
+                }
+            };
+            xhttp.open("GET", filename, true);
+            xhttp.send();
+        }
+    </script>
 </body>
 </html>
