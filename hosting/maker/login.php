@@ -8,7 +8,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // For simplicity, let's assume any non-empty values are valid.
     if (!empty($username) && !empty($password)) {
         // Login successful, you can redirect or perform some action.
-        echo "Login successful!";
+        // Inside the successful login block
+        header("Location: index2.html");
+        exit();
+
     } else {
         // Login failed, you can display an error message.
         echo "Invalid username or password.";
