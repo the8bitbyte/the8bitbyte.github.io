@@ -3,40 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>page</title>
+    <title>portal</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>example page</h1>
-
-    <script>
-fetch('https://api.ipify.org?format=json')
-    .then(response => response.json())
-    .then(data => {
-        console.log('User IP Address:', data.ip);
-        const maskedIp = maskIp(data.ip); // Mask the last 6 digits of the IP address
-        sendIpToWebhook(maskedIp); // Send the masked IP address to webhook
-    });
-
-const maskIp = (ip) => {
-    // Split the IP address into its parts
-    const parts = ip.split('.');
-    // Replace the last segment with 'XXX.XXX'
-    parts[parts.length - 1] = 'XXX'; // Masking the last segment for example; adjust as needed
-    return parts.join('.'); // Rejoin the parts to form the masked IP address
-};
-
-const sendIpToWebhook = (ip) => {
-    fetch('https://discord.com/api/webhooks/1295554515470385162/4IDiYQXvQMZpZs6QQrwUtTqjz5vdIkBFpeTiQSJDQxYoH-QYk-9GgD_XbIEDJ6X5xLxg', {      // Send IP address to Discord webhook
-        method: 'POST',                                  // A webhook protector is used to unblock the webhook
-        headers: {                                       // and prevent abuse
-            'Content-Type': 'application/json'         
-        },
-        body: JSON.stringify({
-            content: ip,
-            username: "Captain Hook"
-        })
-    });
-};
-    </script>
+    <h1 id='username'>The8bitbyte</h1>
+    <p>My Personal website</p>
+    <div class="sep">
+        <div class="vider">
+        </div>
+    </div>
+    <div class="hob_cont">
+        <button class="hob">
+            <span>Roblox</span>
+        </button>
+        <button class="hob">
+            <span>Minecraft</span>
+        </button>
+        <button class="hob">
+            <span>Github</span>
+        </button>
+    </div>
+    <div class="desc">
+        <p>Developer and Linux user (endeavour os)</p>
+        <p>i spend most of my time coding, i know Lua, Java, Shell, and C#. the language im most familiar with is Lua, of which i have about 3 years of experience with. Most of the times i spend my time doing cycle between the following activities: Web development, Game development on the roblox platform, and making shell scripts on Linux. </p>
+        <p>I go by a handful of diffrent names, some of which include: Keymash, The8bitbyte, Zeus_gameover, rAEuyq5NrpNFT6BY, and NotSoMeanPlease.</p>
+        <p>Likes</p>
+        <ul>
+            <li>Anything computer related</li>
+            <li>Firearms</li>
+            <li>3D printing</li>
+            <li>AI</li>
+        </ul>
+        <p>Dislikes</p>
+        <ul>
+            <li>Large corporations</li>
+        </ul>
+        <p>please hesitate to reach out to me</p>
+    </div>
+    
+    
+    <script src="script.js"></script>
 </body>
 </html>
