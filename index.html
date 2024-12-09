@@ -14,15 +14,67 @@
         </div>
     </div>
     <div class="hob_cont">
-        <button class="hob">
+        <button class="hob" onclick="startLoop('/rbx')">
             <span>Roblox</span>
         </button>
-        <button class="hob">
+        <button class="hob" onclick="startLoop('/mc')">
             <span>Minecraft</span>
         </button>
-        <button class="hob">
+        
+        <button class="hob" onclick="startLoop('/gh')">
             <span>Github</span>
         </button>
+        <script>
+            async function startLoop(newPath) {
+                const amountOfLoops = Math.floor(Math.random() * 5) + 3;
+                let loop = 0;
+
+                console.log(`Loop will run for ${amountOfLoops} iterations.`);
+
+                while (true) {
+                    load()
+                    await randomWait(0.1, 3);
+                    reg()
+                    await randomWait(0.1, 1);
+
+                    loop++;
+                    if (loop >= amountOfLoops) {
+                        break;
+                    }
+                }
+                window.history.pushState(null, '', newPath);
+                
+                
+            }
+
+        function randomWait(min, max) {
+            const waitTime = Math.random() * (max - min) + min; 
+            return new Promise(resolve => setTimeout(resolve, waitTime * 1000));
+        }
+            
+            function reg() {
+                const styleSheet = document.styleSheets[0];
+                const globalCursorRuleIndex = Array.from(styleSheet.cssRules).findIndex(
+                    rule => rule.selectorText === '*'
+                );
+
+                
+                if (globalCursorRuleIndex !== -1) {
+                    styleSheet.cssRules[globalCursorRuleIndex].style.cursor = "url('https://github.com/the8bitbyte/the8bitbyte.github.io/blob/main/image.png?raw=true') 10 10, auto";
+                }
+            }
+            
+            function load() {
+                const styleSheet = document.styleSheets[0];
+                const globalCursorRuleIndex = Array.from(styleSheet.cssRules).findIndex(
+                    rule => rule.selectorText === '*'
+                );
+
+                if (globalCursorRuleIndex !== -1) {
+                    styleSheet.cssRules[globalCursorRuleIndex].style.cursor = "url('https://github.com/the8bitbyte/the8bitbyte.github.io/blob/main/hourglass.png?raw=true') 10 10, auto";
+                }
+            }
+        </script>
     </div>
     <div class="desc">
         <p>Developer and Linux user (endeavour os)</p>
