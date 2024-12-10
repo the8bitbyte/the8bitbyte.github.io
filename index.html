@@ -36,9 +36,9 @@
 
                 while (true) {
                     load()
-                    await randomWait(0.1, 3);
+                    await randomWait(0.01, 0.5);
                     reg()
-                    await randomWait(0.1, 1);
+                    await randomWait(0.05, 0.5);
 
                     loop++;
                     if (loop >= amountOfLoops) {
