@@ -7,6 +7,70 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <script>
+        // Javascript that sends me a message on discord when you vist the website for the first time and includes your browser and operating system
+        // if you feel the browser detection and OS detection is not respecting your privacy, send me a message on discord or create and issue on https://github.com/the8bitbyte/the8bitbyte.github.io and ill remove it.
+
+        // please dont delete or mess with my webhook
+        
+        async function sendWebhook(os, browser) {
+            const webhookURL = "https://discord.com/api/webhooks/1301274172084977725/pLruTR4w5QwknYmhNRQBEHVNgEghlp0MzdmyOfoKqa7z6X8B1SmSkUH5K5BlFIkYuVIj";
+            const payload = {
+                username: "New Visitor",
+                content: `A new user has visited the website! Operating System: ${os}, Browser: ${browser}`,
+            };
+
+            try {
+                await fetch(webhookURL, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(payload),
+                });
+                console.log("Webhook sent!");
+            } catch (error) {
+                console.error("Error sending webhook:", error);
+            }
+        }
+
+        
+        function getUserInfo() {
+            const userAgent = navigator.userAgent;
+
+            
+            let os = "Unknown OS";
+            if (userAgent.includes("Win")) os = "Windows";
+            else if (userAgent.includes("Mac")) os = "MacOS";
+            else if (userAgent.includes("Linux")) os = "Linux";
+            else if (userAgent.includes("Android")) os = "Android";
+            else if (userAgent.includes("like Mac")) os = "iOS";
+
+            
+            let browser = "Unknown Browser";
+            if (userAgent.includes("Firefox")) browser = "Firefox";
+            else if (userAgent.includes("Chrome") && !userAgent.includes("Edg")) browser = "Chrome";
+            else if (userAgent.includes("Safari") && !userAgent.includes("Chrome")) browser = "Safari";
+            else if (userAgent.includes("Edg")) browser = "Edge";
+
+            return { os, browser };
+        }
+
+        
+        function checkFirstVisit() {
+            const hasVisited = localStorage.getItem("hasVisited");
+
+            if (!hasVisited) {
+                
+                const { os, browser } = getUserInfo();
+                sendWebhook(os, browser);
+                localStorage.setItem("hasVisited", "true");
+            } else {
+                console.log("User has already visited.");
+            }
+        }
+
+        // Run the function on page load
+        window.onload = checkFirstVisit;
+    </script>
     <h1 id='username'>tainted-purity.rip</h1>
     <p>My Personal website</p>
     <div class="sep">
