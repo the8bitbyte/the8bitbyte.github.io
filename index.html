@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>portal</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portfolio and personal website of [Your Name]">
+  <title>[Your Name]</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+<script src='script.js'></script>
     <script>
         // Javascript that sends me a message on discord when you vist the website for the first time and includes your browser and operating system
         // if you feel the browser detection and OS detection is not respecting your privacy, send me a message on discord or create and issue on https://github.com/the8bitbyte/the8bitbyte.github.io and ill remove it.
@@ -71,79 +73,54 @@
         // Run the function on page load
         window.onload = checkFirstVisit;
     </script>
-    <h1 id='username'>tainted-purity.rip</h1>
-    <p>My Personal website</p>
-    <div class="sep">
-        <div class="vider">
+  <div class="container">
+    <header>
+      <div class="hero">
+        <h1 id='name'>The8bitbyte</h1>
+        <p>Developer</p>
+      </div>
+    </header>
+    <nav>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#work">Work</a></li>
+        <li><a href="#contact">Contact</a></li>
+          <li><a href="#contact">ect</a></li>
+      </ul>
+    </nav>
+    <main>
+      <section id="about">
+        <h2>About Me</h2>
+        <p>placeholder</p>
+      </section>
+      <section id="work">
+        <h2>My Work</h2>
+        <div class="work-grid">
+          <div class="work-item">
+            <h3>Project Title 1</h3>
+            <p>placeholder :/</p>
+            <a href="[project-link]" target="_blank">See More</a>
+          </div>
+          <div class="work-item">
+            <h3>Project Title 2</h3>
+            <p>placeholder :/</p>
+            <a href="[project-link]" target="_blank">See More</a>
+          </div>
+          <div class="work-item">
+            <h3>Project Title 3</h3>
+            <p>placeholder :/</p>
+            <a href="[project-link]" target="_blank">See More</a>
+          </div>
         </div>
-    </div>
-    <div class="hob_cont">
-        <button class="hob" onclick="startLoop('/rbx')">
-            <span>Roblox</span>
-        </button>
-        <button class="hob" onclick="startLoop('/mc')">
-            <span>Minecraft</span>
-        </button>
-        
-        <button class="hob" onclick="startLoop('/gh')">
-            <span>Github</span>
-        </button>
-        <script>
-            async function startLoop(newPath) {
-                
-                window.location.pathname = newPath;
-                
-                
-            }
-
-        function randomWait(min, max) {
-            const waitTime = Math.random() * (max - min) + min; 
-            return new Promise(resolve => setTimeout(resolve, waitTime * 1000));
-        }
-            
-            function reg() {
-                const styleSheet = document.styleSheets[0];
-                const globalCursorRuleIndex = Array.from(styleSheet.cssRules).findIndex(
-                    rule => rule.selectorText === '*'
-                );
-
-                
-                if (globalCursorRuleIndex !== -1) {
-                    styleSheet.cssRules[globalCursorRuleIndex].style.cursor = "url('https://github.com/the8bitbyte/the8bitbyte.github.io/blob/main/image.png?raw=true') 10 10, auto";
-                }
-            }
-            
-            function load() {
-                const styleSheet = document.styleSheets[0];
-                const globalCursorRuleIndex = Array.from(styleSheet.cssRules).findIndex(
-                    rule => rule.selectorText === '*'
-                );
-
-                if (globalCursorRuleIndex !== -1) {
-                    styleSheet.cssRules[globalCursorRuleIndex].style.cursor = "url('https://github.com/the8bitbyte/the8bitbyte.github.io/blob/main/hourglass.png?raw=true') 10 10, auto";
-                }
-            }
-        </script>
-    </div>
-    <div class="desc">
-        <p>Developer and Linux user (endeavour os)</p>
-        <p>I spend most of my time coding. I know Lua, Java, Shell, and C#. The language I am most familiar with is Lua, in which I have about three years of experience. Most of the time, I cycle between the following activities: web development, game development on the Roblox platform, and creating shell scripts on Linux.</p>
-        <p>I go by a handful of different names, including Keymash, The8bitbyte, Zeus_gameover, rAEuyq5NrpNFT6BY, and NotSoMeanPlease.</p>
-        <p>Likes</p>
-        <ul>
-            <li>Anything computer related</li>
-            <li>Firearms</li>
-            <li>3D printing</li>
-            <li>AI</li>
-        </ul>
-        <p>Dislikes</p>
-        <ul>
-            <li>Large corporations</li>
-        </ul>
-        <p>please hesitate to reach out to me</p>
-    </div>
-    
-    
-    <script src="script.js"></script>
+      </section>
+      <section id="contact">
+        <h2>Contact</h2>
+        <p>also placeholder</p>
+      </section>
+    </main>
+    <footer>
+      <p>ill finish this website soon</p>
+    </footer>
+  </div>
 </body>
 </html>
