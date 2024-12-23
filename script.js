@@ -1,18 +1,29 @@
-//const usernameElement = document.getElementById("username");
-//const textList = ["The8bitbyte", "Zeus_gameover", "rAEuyq5NrpNFT6BY", "NotSoMeanPlease"]; // List of strings
-//let currentIndex = 0;
+document.addEventListener("DOMContentLoaded", () => {
+  const names = ["The8bitbyte", "rAEuyq5NrpNFT6BY", "NotSoMeanPlease", "Zeus_gameover"];
+  const nameElement = document.querySelector("header .hero h1");
 
-//function changeText() {
-  // Fade out
-  //usernameElement.style.opacity = 0;
+  if (!nameElement) {
+    return;
+  }
 
-  // Wait for the fade-out transition to finish, then change text and fade in
-  //setTimeout(() => {
-    //currentIndex = (currentIndex + 1) % textList.length; // Loop through the list
-    //usernameElement.textContent = textList[currentIndex]; // Set the new text
-    //usernameElement.style.opacity = 1; // Fade in
-  //}, 1000); // Timeout matches the fade-out duration
-//}
 
-// Run the loop every 3 seconds
-//setInterval(changeText, 3000);
+  const fadeDuration = 500;
+  const displayDuration = 4000;
+  let nameIndex = 0;
+
+
+  function updateName() {
+    nameElement.style.transition = `opacity ${fadeDuration}ms`;
+    nameElement.style.opacity = 0;
+
+    setTimeout(() => {
+      nameIndex = (nameIndex + 1) % names.length;
+      nameElement.textContent = names[nameIndex];
+
+
+      nameElement.style.opacity = 1;
+    }, fadeDuration);
+  }
+
+  setInterval(updateName, displayDuration + fadeDuration * 2);
+});
