@@ -7,8 +7,6 @@ body {
   line-height: 1.6;
   cursor: none;
 }
-
-
 .mouse-box {
     position: absolute;
     top: 0;
@@ -80,6 +78,9 @@ body {
     transition: transform 0.1s ease, width 0.2s ease, height 0.2s ease, border-radius 0.2s ease;
     z-index: 10000;
 }
+
+
+
 
 
 
