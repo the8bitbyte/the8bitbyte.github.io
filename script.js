@@ -6,11 +6,9 @@ document.addEventListener("DOMContentLoaded", () => {
     return;
   }
 
-
   const fadeDuration = 500;
   const displayDuration = 4000;
   let nameIndex = 0;
-
 
   function updateName() {
     nameElement.style.transition = `opacity ${fadeDuration}ms`;
@@ -18,8 +16,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     setTimeout(() => {
       nameIndex = (nameIndex + 1) % names.length;
-      nameElement.textContent = names[nameIndex];
+      const newName = names[nameIndex];
+      nameElement.textContent = newName;
 
+      // Update the data-shadow attribute for the pseudo-element
+      nameElement.setAttribute("data-shadow", newName);
 
       nameElement.style.opacity = 1;
     }, fadeDuration);
@@ -27,3 +28,5 @@ document.addEventListener("DOMContentLoaded", () => {
 
   setInterval(updateName, displayDuration + fadeDuration * 2);
 });
+
+
