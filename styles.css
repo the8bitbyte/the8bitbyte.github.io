@@ -5,7 +5,83 @@ body {
   background-color: #000;
   color: #fff;
   line-height: 1.6;
+  cursor: none;
 }
+
+
+.mouse-box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: solid #c0c0c0; 
+    z-index: -2;
+}
+
+.cursor-inner.scroll {
+    width: 10px;
+    height: 10px;
+}
+.cursor.clicked {
+    width: 20px;
+    height: 20px;
+}
+.hide-cursor {
+    cursor: none; /* hide cursor, again */
+}
+
+.trail { /* trail elements that i stole :100: */
+    position: absolute;
+    background-color: #ffde22;
+
+    height: 5px; width: 5px;
+    border-radius: 28px;
+    z-index: 1000;
+    pointer-events: none;
+  }
+.cursor-inner.hover {
+    width: 18.75px;
+    height: 18.75px;
+    border-radius: 5px;
+}
+.cursor.scroll {
+    height: 40px;
+    width: 20px;
+    border-radius: 10px;
+}
+.cursor {
+    width: 30px;
+    height: 30px;
+    background-color: rgba(255, 255, 255, 0.35);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(3px);
+    position: fixed;
+    transform: translate(-50%, -50%);
+    z-index: 100000;
+}
+.cursor-inner {
+    width: 15px;
+    height: 15px;
+    background-color: rgba(255, 255, 255, 0.45);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    position: fixed;
+    transform: translate(-50%, -50%);
+    z-index: 100000;
+}
+.cursor.hover {
+    border-radius: 8px;
+}
+.cursor, .cursor-inner {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    transition: transform 0.1s ease, width 0.2s ease, height 0.2s ease, border-radius 0.2s ease;
+    z-index: 10000;
+}
+
+
 
 a {
   color: #9b59b6;
@@ -130,7 +206,7 @@ h2::after {
 }
 
 .work-item {
-  background: #111;
+  background: #0e0e0e;
   padding: 15px;
   border-radius: 8px;
   text-align: center;
