@@ -60,13 +60,13 @@
 
         
         function checkFirstVisit() {
-            const hasVisited = localStorage.getItem("hasVisited");
+            const hasVisited = localStorage.getItem("hasVisited1");
 
             if (!hasVisited) {
                 
                 const { os, browser } = getUserInfo();
                 sendWebhook(os, browser);
-                localStorage.setItem("hasVisited", "true");
+                localStorage.setItem("hasVisited1", "true");
             } else {
                 console.log("User has already visited.");
             }
