@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const names = ["The8bitbyte", "rAEuyq5NrpNFT6BY", "NotSoMeanPlease", "Zeus_gameover"];
+  const names = ["rAEuyq5NrpNFT6BY", "NotSoMeanPlease", "Zeus_gameover"];
   const nameElement = document.querySelector("header .hero h1");
 
   if (!nameElement) {
