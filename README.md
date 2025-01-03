@@ -1,1 +1,1 @@
-to prevent skids from copying the website rep.js ensures its under one of my domains, if not it loads skid.html, if rep.js is deleted then the CSS does not apply and rep.js cant be modifyed because its obfuscated
+to prevent skids from copying the website rep.js ensures its under one of my domains, if not it loads skid.html, if rep.js is deleted then the CSS does not apply and rep.js cant be modifyed because its obfuscated, it can of course be deobfuscated pretty easly, but if a skid is trying to steal my website i have a feeling they wouldnt go to that length
