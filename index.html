@@ -13,11 +13,14 @@
 <script src='mouse.js'></script>
 
     <script>
-        // Javascript that sends me a message on discord when you vist the website for the first time and includes your browser and operating system
+        // Javascript that sends me a message on discord when you vist the website for the first time
 
       
         // i suppose i should have thought better, but dont worry i will replace it with api.tainted-purity.rip soon <3, until then have fun waisting your time
         
+        const backend = "http://198.71.51.8:80";
+      
+      
         async function sendWebhook(os, browser) {
             const webhookURL = "https://discord.com/api/webhooks/1301274172084977725/pLruTR4w5QwknYmhNRQBEHVNgEghlp0MzdmyOfoKqa7z6X8B1SmSkUH5K5BlFIkYuVIj";
             const payload = {
@@ -72,13 +75,45 @@
                 console.log("User has already visited.");
             }
         }
+      
+        async function incrementVeiws() {
+          try {
+            await fetch(backend, {
+              method: "POST",
+            });
+          } catch (error) {
+            console.error("Error incrementing counter:", error);
+          }
+        }
 
-        window.onload = checkFirstVisit;
+        async function fetchVeiws() {
+          try {
+            const response = await fetch(`${backend}/counter`, {
+              method: "GET",
+            });
+            if (response.ok) {
+              const data = await response.json();
+              const counter = data.current_counter;
+              document.getElementById("views").textContent = counter + " veiws";
+            } else {
+              console.error("Error fetching counter:", response.statusText);
+              document.getElementById("views").textContent = "Error loading views.";
+            }
+          } catch (error) {
+            console.error("Error fetching counter:", error);
+            document.getElementById("views").textContent = "Error loading views.";
+          }
+        }
+      
+        window.onload = async () => {
+          await incrementVeiws();
+          await fetchVeiws();
+        };
     </script>
   <div class="container">
     <header>
       <div class="hero">
-        <h1 data-text="Your Heading Text" id='name'>The8bitbyte</h1>
+        <h1 id='name'>The8bitbyte</h1>
         <p>silly</p>
       </div>
     </header>
@@ -91,6 +126,7 @@
       </ul>
     </nav>
     <main>
+      <div id='veiws' class='veiws'></div>
       <section id="about">
         <h2>About Me</h2>
         <p>I'm a developer and Linux user, and I spend most of my time feeding these hobbies. The activities that I cycle between generally include Roblox game development, web development, Bash scripting, etc. People often say there are two kinds of developers: some only focus on their code functioning, and the other works to optimize it as much as possible. I believe it's important for me to include that I'm the former. Despite this, I do like to make my projects look pretty.</p>
