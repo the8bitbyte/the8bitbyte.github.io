@@ -18,7 +18,7 @@
       
         // i suppose i should have thought better, but dont worry i will replace it with api.tainted-purity.rip soon <3, until then have fun waisting your time
         
-        const backend = "http://198.71.51.8:80";
+        const backend = "http://tainted-purity.rip/api";
       
       
         async function sendWebhook(os, browser) {
@@ -87,6 +87,7 @@
         }
 
         async function fetchVeiws() {
+          console.log("fetch")
           try {
             const response = await fetch(`${backend}/counter`, {
               method: "GET",
@@ -94,7 +95,8 @@
             if (response.ok) {
               const data = await response.json();
               const counter = data.current_counter;
-              document.getElementById("views").textContent = counter + " veiws";
+              console.log(counter)
+              document.getElementById('veiws').innerHtml = counter + " veiws";
             } else {
               console.error("Error fetching counter:", response.statusText);
               document.getElementById("views").textContent = "Error loading views.";
@@ -105,10 +107,18 @@
           }
         }
       
-        window.onload = async () => {
-          await incrementVeiws();
-          await fetchVeiws();
-        };
+        //window.onload = async () => {
+        //  console.log("onload")
+        //  await incrementVeiws();
+        //  await fetchVeiws();
+        //};
+        document.addEventListener("DOMContentLoaded", () => {
+          setTimeout(() => {
+            console.log(document.getElementById('veiws'))
+            incrementVeiws();
+            fetchVeiws
+          }, 1000);
+        });
     </script>
   <div class="container">
     <header>
@@ -126,7 +136,7 @@
       </ul>
     </nav>
     <main>
-      <div id='veiws' class='veiws'></div>
+      <div id='veiws' class='veiws'>loading</div>
       <section id="about">
         <h2>About Me</h2>
         <p>I'm a developer and Linux user, and I spend most of my time feeding these hobbies. The activities that I cycle between generally include Roblox game development, web development, Bash scripting, etc. People often say there are two kinds of developers: some only focus on their code functioning, and the other works to optimize it as much as possible. I believe it's important for me to include that I'm the former. Despite this, I do like to make my projects look pretty.</p>
