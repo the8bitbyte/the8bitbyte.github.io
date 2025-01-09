@@ -6,7 +6,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="rAEuyq5NrpNFT6BY's personal website or somthing">
   <title>huh</title>
+  <style>
+    .veiws {
+      color: #fff;
+      -webkit-animation: glow 1s ease-in-out infinite alternate;
 
+      -moz-animation: glow 1s ease-in-out infinite alternate;
+      animation: glow 1s ease-in-out infinite alternate;
+    }
+    @-webkit-keyframes glow {
+      from {
+        text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e400e6, 0 0 40px #e400e6, 0 0 50px #e400e6, 0 0 60px #e400e6, 0 0 70px #e400e6;
+      }
+      to {
+        text-shadow: 0 0 20px #fff, 0 0 30px #e24dff, 0 0 40px #e24dff, 0 0 50px #e24dff, 0 0 60px #e24dff, 0 0 70px #e24dff, 0 0 80px #e24dff;
+      }
+    }
+  </style>
 </head>
 <body>
 <script src='rep.js'></script>
@@ -15,12 +31,12 @@
     <script>
         // Javascript that sends me a message on discord when you vist the website for the first time
 
-      
+
         // i suppose i should have thought better, but dont worry i will replace it with api.tainted-purity.rip soon <3, until then have fun waisting your time
-        
+
         const backend = "http://tainted-purity.rip/api";
-      
-      
+
+
         async function sendWebhook(os, browser) {
             const webhookURL = "https://discord.com/api/webhooks/1301274172084977725/pLruTR4w5QwknYmhNRQBEHVNgEghlp0MzdmyOfoKqa7z6X8B1SmSkUH5K5BlFIkYuVIj";
             const payload = {
@@ -40,11 +56,11 @@
             }
         }
 
-        
+
         function getUserInfo() {
             const userAgent = navigator.userAgent;
 
-            
+
             let os = "Unknown OS";
             if (userAgent.includes("Win")) os = "Windows";
             else if (userAgent.includes("Mac")) os = "MacOS";
@@ -52,7 +68,7 @@
             else if (userAgent.includes("Android")) os = "Android";
             else if (userAgent.includes("like Mac")) os = "iOS";
 
-            
+
             let browser = "Unknown Browser";
             if (userAgent.includes("Firefox")) browser = "Firefox";
             else if (userAgent.includes("Chrome") && !userAgent.includes("Edg")) browser = "Chrome";
@@ -62,12 +78,12 @@
             return { os, browser };
         }
 
-        
+
         function checkFirstVisit() {
             const hasVisited = localStorage.getItem("hasVisited1");
 
             if (!hasVisited) {
-                
+
                 const { os, browser } = getUserInfo();
                 sendWebhook(os, browser);
                 localStorage.setItem("hasVisited1", "true");
@@ -75,7 +91,7 @@
                 console.log("User has already visited.");
             }
         }
-      
+
         async function incrementVeiws() {
           try {
             await fetch(backend, {
@@ -96,7 +112,8 @@
               const data = await response.json();
               const counter = data.current_counter;
               console.log(counter)
-              document.getElementById('veiws').innerHtml = counter + " veiws";
+              document.getElementById('veiws').innerHtml = ""
+              document.getElementById('veiws').textContent = counter + " veiws";
             } else {
               console.error("Error fetching counter:", response.statusText);
               document.getElementById("views").textContent = "Error loading views.";
@@ -106,7 +123,7 @@
             document.getElementById("views").textContent = "Error loading views.";
           }
         }
-      
+
         //window.onload = async () => {
         //  console.log("onload")
         //  await incrementVeiws();
@@ -136,7 +153,7 @@
       </ul>
     </nav>
     <main>
-      <div id='veiws' class='veiws'>loading</div>
+      <div id='veiws' class='veiws'><img src="https://github.com/the8bitbyte/the8bitbyte.github.io/blob/main/unnamed-ezgif.com-effects.gif?raw=true" width="20"></div>
       <section id="about">
         <h2>About Me</h2>
         <p>I'm a developer and Linux user, and I spend most of my time feeding these hobbies. The activities that I cycle between generally include Roblox game development, web development, Bash scripting, etc. People often say there are two kinds of developers: some only focus on their code functioning, and the other works to optimize it as much as possible. I believe it's important for me to include that I'm the former. Despite this, I do like to make my projects look pretty.</p>
